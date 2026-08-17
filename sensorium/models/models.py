@@ -61,6 +61,13 @@ def stacked_core_full_gauss_readout(
     whitener=None,
     whitener_momentum=0.003,
     cor_rot_equivar=False,
+    whitener_mode='ema',
+    whitener_detach_batch_stats=True,
+    whitener_window_size=1,
+    whitener_eps=1e-5,
+    variance_floor_weight=0.0,
+    variance_floor_gamma=1.0,
+    decov_weight=0.0,
 ):
     """
     Model class of a stacked2dCore (from neuralpredictors) and a pointpooled (spatial transformer) readout
@@ -166,6 +173,10 @@ def stacked_core_full_gauss_readout(
         whitener = Whitener(
             model_dim=hidden_channels,
             momentum=whitener_momentum,
+            mode=whitener_mode,
+            detach_batch_stats=whitener_detach_batch_stats,
+            window_size=whitener_window_size,
+            eps=whitener_eps,
         )
 
     in_shapes_dict = {
@@ -216,6 +227,9 @@ def stacked_core_full_gauss_readout(
         readout=readout,
         shifter=shifter,
         elu_offset=elu_offset,
+        variance_floor_weight=variance_floor_weight,
+        variance_floor_gamma=variance_floor_gamma,
+        decov_weight=decov_weight,
     )
 
     return model
@@ -262,6 +276,13 @@ def stacked_core_factorized_readout(
     gamma_sigma=0.25,
     whitener=None,
     whitener_momentum=0.003,
+    whitener_mode='ema',
+    whitener_detach_batch_stats=True,
+    whitener_window_size=1,
+    whitener_eps=1e-5,
+    variance_floor_weight=0.0,
+    variance_floor_gamma=1.0,
+    decov_weight=0.0,
     readout_kernel_size=7,
     readout_kernel_sigma=2.0,
     temperature=1.0,
@@ -382,6 +403,10 @@ def stacked_core_factorized_readout(
         whitener = Whitener(
             model_dim=hidden_channels,
             momentum=whitener_momentum,
+            mode=whitener_mode,
+            detach_batch_stats=whitener_detach_batch_stats,
+            window_size=whitener_window_size,
+            eps=whitener_eps,
         )
 
     in_shapes_dict = {
@@ -437,6 +462,9 @@ def stacked_core_factorized_readout(
         readout=readout,
         shifter=shifter,
         elu_offset=elu_offset,
+        variance_floor_weight=variance_floor_weight,
+        variance_floor_gamma=variance_floor_gamma,
+        decov_weight=decov_weight,
     )
 
     return model

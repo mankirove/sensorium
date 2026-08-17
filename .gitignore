@@ -28,6 +28,8 @@ logs/
 *.json
 *.log
 *.csv
+*.sh
 notebooks/data
 notebooks/lurz2020
 analysis/data/
+analysis/plots/
