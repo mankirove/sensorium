@@ -68,6 +68,7 @@ def stacked_core_full_gauss_readout(
     variance_floor_weight=0.0,
     variance_floor_gamma=1.0,
     decov_weight=0.0,
+    decorrelation_on_raw_features=False,
 ):
     """
     Model class of a stacked2dCore (from neuralpredictors) and a pointpooled (spatial transformer) readout
@@ -230,6 +231,7 @@ def stacked_core_full_gauss_readout(
         variance_floor_weight=variance_floor_weight,
         variance_floor_gamma=variance_floor_gamma,
         decov_weight=decov_weight,
+        decorrelation_on_raw_features=decorrelation_on_raw_features,
     )
 
     return model
@@ -283,6 +285,7 @@ def stacked_core_factorized_readout(
     variance_floor_weight=0.0,
     variance_floor_gamma=1.0,
     decov_weight=0.0,
+    decorrelation_on_raw_features=False,
     readout_kernel_size=7,
     readout_kernel_sigma=2.0,
     temperature=1.0,
@@ -465,6 +468,7 @@ def stacked_core_factorized_readout(
         variance_floor_weight=variance_floor_weight,
         variance_floor_gamma=variance_floor_gamma,
         decov_weight=decov_weight,
+        decorrelation_on_raw_features=decorrelation_on_raw_features,
     )
 
     return model
