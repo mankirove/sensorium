@@ -32,6 +32,7 @@ def get_parser():
     parser.add_argument('--variance_floor_gamma', type=float, default=1.0)
     parser.add_argument('--decov_weight', type=float, default=0.0)
     parser.add_argument('--decorrelation_on_raw_features', action='store_true', default=False)
+    parser.add_argument('--joint_cycler', action='store_true', default=False)
 
     parser.add_argument('--readout_type', type=str, default='factorized')
     parser.add_argument('--regularizer_type', type=str, default='adaptive_log_norm')
@@ -227,6 +228,7 @@ def main():
         'use_wandb': use_wandb, 
         'cp_every_epoch': args.cp_every_epoch,
         'checkpoint_dir': checkpoint_dir,
+        'joint_cycler': args.joint_cycler,
     }
     trainer_config['wandb_config'] = model_config | trainer_config
 

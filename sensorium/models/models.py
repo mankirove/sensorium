@@ -179,6 +179,8 @@ def stacked_core_full_gauss_readout(
             window_size=whitener_window_size,
             eps=whitener_eps,
         )
+    elif whitener is False:
+        whitener = None
 
     in_shapes_dict = {
         k: get_module_output(core, v[in_name])[1:]
@@ -411,6 +413,8 @@ def stacked_core_factorized_readout(
             window_size=whitener_window_size,
             eps=whitener_eps,
         )
+    elif whitener is False:
+        whitener = None
 
     in_shapes_dict = {
         k: get_module_output(core, v[in_name])[1:]
