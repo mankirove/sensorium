@@ -205,7 +205,7 @@ def main():
         'avg_loss': False,
         'lr_init': 0.009,
         'device': device, 
-        'wandb_project': 'small readout vectors',
+        'wandb_project': 'during-training-whitening',
         'wandb_name': args.wandb_run_name,
         'use_wandb': use_wandb, 
         'cp_every_epoch': args.cp_every_epoch,
