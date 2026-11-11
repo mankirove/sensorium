@@ -417,10 +417,14 @@ def standard_trainer(
             if wandb_project and use_wandb:
                 live_whitening_diag = {}
                 if getattr(model, "whitener", None) is not None and model.whitener.mode == "batch":
-                    with model.whitener.live_stats():
-                        live_whitening_correlation = get_correlations(
-                            model, dataloaders["validation"], device=device, as_dict=False, per_neuron=False
-                        )
+                    try:
+                        with model.whitener.live_stats():
+                            live_whitening_correlation = get_correlations(
+                                model, dataloaders["validation"], device=device, as_dict=False, per_neuron=False
+                            )
+                    except torch.linalg.LinAlgError as e:
+                        print(f"live-stats whitening diagnostic failed at epoch {epoch}: {e}")
+                        live_whitening_correlation = float("nan")
                     live_whitening_diag = {"val/correlation_live_whitening": float(live_whitening_correlation)}
 
                 wandb_dict = {
