@@ -408,6 +408,9 @@ def standard_trainer(
                 "whitener/raw_cond": model.whitener.last_raw_cond,
                 "whitener/raw_min_abs_eigenvalue": model.whitener.last_raw_min_abs_eigenvalue,
                 "whitener/raw_max_abs_eigenvalue": model.whitener.last_raw_max_abs_eigenvalue,
+                "whitener/raw_effective_rank": model.whitener.last_raw_effective_rank,
+                "whitener/raw_n_copies": model.whitener.last_raw_n_copies,
+                "whitener/raw_mean_max_corr": model.whitener.last_raw_mean_max_corr,
             }
 
         model.eval()
